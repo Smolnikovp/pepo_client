@@ -1,6 +1,4 @@
-var fs = require('fs'),
-    path = require('path'),
-    techs = {
+var techs = {
         fileProvider: require('enb/techs/file-provider'),
         fileMerge: require('enb/techs/file-merge'),
         fileCopy: require('enb/techs/file-copy'),
@@ -23,32 +21,12 @@ var fs = require('fs'),
         { path: 'libs/bem-history/common.blocks', check: false },
         'common.blocks',
         'single.blocks'
-    ],
-    PLATFORMS = {
-        'desktop': ['common', 'desktop'],
-        'touch-phone': ['common', 'touch'],
-        'touch-pad': ['common', 'touch']
-    },
-    SETS = {
-        'desktop': ['common', 'desktop'],
-        'touch': ['common', 'touch']
-    };
+    ];
 
 var isProd = process.env.YENV === 'production';
 isProd || levels.push('development.blocks');
 
 module.exports = function (config) {
-    var platforms = Object.keys(PLATFORMS),
-        sets = Object.keys(SETS);
-
-
-    config.includeConfig('enb-bem-specs'); // Подключаем модуль `enb-bem-specs`.
-
-    configureDist(platforms);
-    configurePages(platforms);
-    configureSets(sets, {
-        specs: config.module('enb-bem-specs').createConfigurator('specs')
-    });
 
     config.nodes('*.bundles/*', function (nodeConfig) {
         nodeConfig.addTechs([

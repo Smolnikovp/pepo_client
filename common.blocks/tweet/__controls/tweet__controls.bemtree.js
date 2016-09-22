@@ -24,6 +24,7 @@ block('tweet').elem('controls').content()(function () {
                 add_btns.mods = { type: 'good' };
             }
 
+            add_btns.mods[value] = true;
             add_btns.icon.mods[value] = true;
 
             return add_btns;

@@ -39,6 +39,7 @@ block('profile-edit')(
                         mods: { theme: 'islands', size: 'm', width: 'available', 'has-clear': true, field: id },
                         mix: { block: 'profile-edit', elem: 'input' },
                         tabIndex: curr_index,
+                        name: id,
                         val: input_value,
                         placeholder: v
                     }
