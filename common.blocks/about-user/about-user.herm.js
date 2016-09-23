@@ -16,23 +16,17 @@ describe('Войти', function () {
     });
 });
 
-describe('Блок about-user на странице profile', function () {
-    it('должен отобразить информацию о пользователе', function () {
+describe('Блок about-user должен отобразить информацию о пользователе', function () {
+    it('на странице profile', function () {
         return this.browser
             .url(config.servers.frontend_server + '/profile')
             .getText('.about-user .text_username')
             .getText('.about-user .text_id');
     });
-});
 
-describe('В блоке tweet на странице profile должны быть: ', function () {
-    it('блок about-user', function () {
+    it('в ленте', function () {
         return this.browser
-            .waitForVisible('.tweet .about-user');
-    });
-
-    it('данные о пользователе', function () {
-        return this.browser
+            .waitForVisible('.tweet .about-user')
             .getText('.tweet .text_time')
             .getText('.tweet .text_username')
             .getText('.tweet .text_id');
