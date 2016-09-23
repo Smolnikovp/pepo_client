@@ -28,6 +28,21 @@ isProd || levels.push('development.blocks');
 
 module.exports = function (config) {
 
+    config.includeConfig('enb-bem-specs'); // Подключаем модуль `enb-bem-specs`.
+
+    var examples = config.module('enb-bem-specs') // Создаём конфигуратор сетов
+        .createConfigurator('specs');             //  в рамках `specs`-таска.
+
+    examples.configure({
+        destPath: 'desktop.specs',
+        levels: ['common.blocks'],
+        sourceLevels: [
+            { path: '../libs/bem-core/common.blocks', check: false },
+            { path: '../libs/bem-pr/spec.blocks', check: false },
+            'common.blocks'
+        ]
+    });
+
     config.nodes('*.bundles/*', function (nodeConfig) {
         nodeConfig.addTechs([
             // essential
